@@ -1,6 +1,11 @@
-// Assignment Code
+// Main Code
 var generateBtn = document.querySelector("#generate");
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Helper functons
+// ----------------------------------------------
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -21,13 +26,12 @@ function generatePassword() {
       alert('Password length should not be less than 8 or more than 128');
     }
   } while (!(passwordLength > 7 && passwordLength < 129));
-  console.log('Password length: ', passwordLength);
   
   // Character sets to choose from
-  var lowercaseCharSet = 'abcdefghijklmnopqrstuvwxyz'; // 26
-  var uppercaseCharSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // 26
-  var numericCharSet = '0123456789' // 10
-  var specialCharSet = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~' + "'"; // 33
+  var lowercaseCharSet = 'abcdefghijklmnopqrstuvwxyz';
+  var uppercaseCharSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var numericCharSet = '0123456789'
+  var specialCharSet = ' !"#$%&()*+,-./:;<=>?@[\]^_`{|}~' + "'";
   
   var uppercase, lowercase, numeric, special; // varaibles to set choice
   var password = '';
@@ -68,11 +72,10 @@ function generatePassword() {
   }
   
   // Generate password based on criterias
-  console.log('Password length:' + passwordLength + ' Character set: ' + charsetToUse); // For testing: to check if choice is correct
   // Loop to repeat to generate each character in password
   for (var i = 1; i <= passwordLength; i++) {
-    positon = Math.floor(Math.random() * (charsetToUse.length));
-    password += charsetToUse.charAt(positon);
+    positon = Math.floor(Math.random() * (charsetToUse.length)); // Generate position from 0 to length of password - 1
+    password += charsetToUse.charAt(positon); // pick chatacter from charSet and add it to password string
   }
   
   console.log(password + '   Password length: ' + password.length); // For testing to confirm password
@@ -81,5 +84,4 @@ function generatePassword() {
   return password;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
