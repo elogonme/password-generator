@@ -55,31 +55,29 @@ function generatePassword(passwordLength, uppercase, lowercase, numeric, special
     // Check if include uppercase
     if (uppercase) {
       charsetToUse = uppercaseCharSet; // Include uppercase to choose from
-    }
+    };
 
     // Check if include lowercase
     if (lowercase) {
       charsetToUse += lowercaseCharSet; // Include lowercase to choose from
-    }
+    };
     
     //Check if include numeric
     if (numeric) {
       charsetToUse += numericCharSet; // Include lowercase to choose from
-    }
+    };
 
     //Check if include special characters
     if (special) {
       charsetToUse += specialCharSet; // Include lowercase to choose from
-    }
+    };
 
   // Generate password based on criterias
   // Loop to repeat to generate each character in password
   for (var i = 1; i <= passwordLength; i++) {
     positon = Math.floor(Math.random() * (charsetToUse.length)); // Generate random position from 0 to length of password - 1
     password += charsetToUse.charAt(positon); // pick chatacter at position from charSet and add it to password string
-  }
-  
-  console.log(password + '   Password length: ' + password.length); // For testing to confirm password
+  };
 
   // Return generated password
   return password;
